@@ -876,6 +876,11 @@ ex_array<St, Alloc>::ex_array(const ex_array<St, Alloc>& irk_src, const allocato
 	:M_front_buffer_ratio(irk_src.M_front_buffer_ratio), M_Alloc(i_alloc){
 
 	default_initialization();
+
+	//	The following is not implemented with an assign(irk_src.begin(), irk_src.end()) 
+	// call because we want to preserve the front and back buffer space of the source.
+	// This preserves a more genuine "copy" or the src array. 
+
 	if(irk_src.empty()){
 		return;
 	}
